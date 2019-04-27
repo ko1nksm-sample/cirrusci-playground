@@ -7,7 +7,7 @@ CirrusCI_task:
   script:
     - uname -a
     - echo ok
-    - aaaa
+    - ls -al | shuf | head -n 5
     - echo ok2
 
 
