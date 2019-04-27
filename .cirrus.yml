@@ -1,7 +1,9 @@
-container:
-  image: busybox
+freebsd_instance:
+  image: freebsd-11-2-release-amd64
 
 check_task:
-  test_script: ls -al
+  test_script: uname -a
+
+
 
 
