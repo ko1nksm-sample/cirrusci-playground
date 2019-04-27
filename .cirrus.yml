@@ -3,8 +3,3 @@ container:
 
 task:
   script: uname -a
-
-
-
-
-
