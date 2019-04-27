@@ -1,6 +1,7 @@
 container:
-  image: node:latest
+  image: busybox
 
 check_task:
-  test_script: echo ok
+  test_script: ls -al
+
 
