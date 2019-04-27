@@ -4,5 +4,10 @@ CirrusCI_task:
       - image: freebsd-10-4-release-amd64
       - image: freebsd-11-2-release-amd64
       - image: freebsd-12-0-release-amd64
-  script: uname -a
+  script:
+    - uname -a
+    - echo ok
+    - aaaa
+    - echo ok2
+
 
