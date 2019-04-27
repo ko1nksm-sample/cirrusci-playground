@@ -1,4 +1,4 @@
-task:
+CirrusCI_task:
   freebsd_instance:
     matrix:
       - image: freebsd-10-4-release-amd64
