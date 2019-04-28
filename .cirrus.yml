@@ -24,16 +24,32 @@
 #    - where bash
 #    - bash -c 'ls -al'
 
+#CirrusCI_task:
+#  windows_container:
+#    image: cirrusci/windowsservercore:2019
+#    os_version: 2019
+#  env:
+#    PATH: $PATH;C:\tools\msys64\usr\bin
+#  install_script:
+#    - choco install -y msys2
+#    - set
+#    - pacman.exe -Syu --noconfirm zsh
+#  script:
+#    - ver
+#    - set
+#    - where bash
+#    - bash -c 'ls -al'
+
 CirrusCI_task:
   windows_container:
     image: cirrusci/windowsservercore:2019
     os_version: 2019
   env:
-    PATH: $PATH;C:\tools\msys64\usr\bin
+    PATH: $PATH;C:\tools\cygwin\bin
   install_script:
-    - choco install -y msys2
+    - choco install -y cygwin cyg-get
     - set
-    - pacman.exe -Syu --noconfirm zsh
+    - cyg-get zsh
   script:
     - ver
     - set
