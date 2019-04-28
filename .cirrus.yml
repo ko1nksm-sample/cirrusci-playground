@@ -7,12 +7,32 @@
 #    - uname -a
 #    - echo ok
 
+# git bash ・・・ 何もインストールしない
+# msys2 ・・・ pacman でインストールする
+# cygwin ・・・ cyg-get でインストールする
+
+# git bash
+#CirrusCI_task:
+#  windows_container:
+#    image: cirrusci/windowsservercore:2019
+#    os_version: 2019
+#  env:
+#    PATH: $PATH;$ProgramFiles\Git\bin
+#  script:
+#    - ver
+#    - set
+#    - where bash
+#    - bash -c 'ls -al'
+
 CirrusCI_task:
   windows_container:
     image: cirrusci/windowsservercore:2019
     os_version: 2019
   env:
     PATH: $PATH;$ProgramFiles\Git\bin
+  install_script:
+    - choco install -y msys2
+    - pacman -Syu zsh
   script:
     - ver
     - set
