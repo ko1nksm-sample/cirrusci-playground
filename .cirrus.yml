@@ -32,7 +32,8 @@ CirrusCI_task:
     PATH: $PATH;$ProgramFiles\Git\bin
   install_script:
     - choco install -y msys2
-    - pacman -Syu zsh
+    - set
+    - C:\tools\msys64\usr\bin\pacman.exe -Syu zsh
   script:
     - ver
     - set
