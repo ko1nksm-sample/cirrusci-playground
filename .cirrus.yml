@@ -12,7 +12,7 @@ CirrusCI_task:
     image: cirrusci/windowsservercore:2019
     os_version: 2019
   env:
-    - PATH: $PATH;$ProgramFiles\Git\bin
+    PATH: $PATH;$ProgramFiles\Git\bin
   script:
     - ver
     - set
