@@ -29,11 +29,11 @@ CirrusCI_task:
     image: cirrusci/windowsservercore:2019
     os_version: 2019
   env:
-    PATH: $PATH;$ProgramFiles\Git\bin
+    PATH: $PATH;C:\tools\msys64\usr\bin
   install_script:
     - choco install -y msys2
     - set
-    - C:\tools\msys64\usr\bin\pacman.exe -Syu zsh
+    - pacman.exe -Syu --noconfirm zsh
   script:
     - ver
     - set
