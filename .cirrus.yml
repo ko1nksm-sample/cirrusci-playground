@@ -40,16 +40,32 @@
 #    - where bash
 #    - bash -c 'ls -al'
 
+# CirrusCI_task:
+#   windows_container:
+#     image: cirrusci/windowsservercore:2019
+#     os_version: 2019
+#   env:
+#     PATH: $PATH;C:\tools\cygwin\bin
+#   install_script:
+#     - choco install -y cygwin cyg-get
+#     - set
+#     - cyg-get zsh
+#   script:
+#     - ver
+#     - set
+#     - where bash
+#     - bash -c 'ls -al'
+
 CirrusCI_task:
   windows_container:
     image: cirrusci/windowsservercore:2019
     os_version: 2019
-  env:
-    PATH: $PATH;C:\tools\cygwin\bin
   install_script:
-    - choco install -y cygwin cyg-get
+    - choco install -y wsl
     - set
-    - cyg-get zsh
+    - wsl --exec uname -a
+    - wsl --exec whoami
+    - wsl --exec apt-get install -y zsh
   script:
     - ver
     - set
