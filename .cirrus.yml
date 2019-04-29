@@ -19,13 +19,13 @@ windows_task:
     - where bash
     - bash -c 'ls -al'
 
-task:
+CirrusCI_task:
   depends_on:
     - freebsd
     - windows
   container:
     image: busybox
-  script:
+  CirrusCI_script:
     - echo ok
 
 # git bash ・・・ 何もインストールしない
