@@ -1,11 +1,28 @@
-#CirrusCI_task:
-#  freebsd_instance:
-#    matrix:
-#      - image: freebsd-11-2-release-amd64
-#      - image: freebsd-12-0-release-amd64
-#  script:
-#    - uname -a
-#    - echo ok
+freebsd_task:
+  freebsd_instance:
+    matrix:
+      - image: freebsd-11-2-release-amd64
+      - image: freebsd-12-0-release-amd64
+  script:
+    - uname -a
+    - echo ok
+
+windows_task:
+  windows_container:
+    image: cirrusci/windowsservercore:2019
+    os_version: 2019
+  env:
+    PATH: $PATH;$ProgramFiles\Git\bin
+  script:
+    - ver
+    - set
+    - where bash
+    - bash -c 'ls -al'
+
+CirrusCI_task:
+  depends_on:
+    - freebsd
+    - windows
 
 # git bash ・・・ 何もインストールしない
 # msys2 ・・・ pacman でインストールする
@@ -56,18 +73,18 @@
 #     - where bash
 #     - bash -c 'ls -al'
 
-CirrusCI_task:
-  windows_container:
-    image: cirrusci/windowsservercore:2019
-    os_version: 2019
-  install_script:
-    - choco install -y wsl
-    - set
-    - wsl --exec uname -a
-    - wsl --exec whoami
-    - wsl --exec apt-get install -y zsh
-  script:
-    - ver
-    - set
-    - where bash
-    - bash -c 'ls -al'
+# CirrusCI_task:
+#   windows_container:
+#     image: cirrusci/windowsservercore:2019
+#     os_version: 2019
+#   install_script:
+#     - choco install -y wsl
+#     - set
+#     - wsl --exec uname -a
+#     - wsl --exec whoami
+#     - wsl --exec apt-get install -y zsh
+#   script:
+#     - ver
+#     - set
+#     - where bash
+#     - bash -c 'ls -al'
