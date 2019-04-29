@@ -7,7 +7,9 @@ freebsd_task:
     - uname -a
     - echo ok
 
-windows_task:
+CirrusCI_task:
+  depends_on:
+    - freebsd
   windows_container:
     image: cirrusci/windowsservercore:2019
     os_version: 2019
@@ -18,11 +20,6 @@ windows_task:
     - set
     - where bash
     - bash -c 'ls -al'
-
-CirrusCI_task:
-  depends_on:
-    - freebsd
-    - windows
 
 # git bash ・・・ 何もインストールしない
 # msys2 ・・・ pacman でインストールする
