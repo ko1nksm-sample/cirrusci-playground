@@ -30,4 +30,5 @@ cygwin_task:
     - choco install -y cygwin cyg-get
   script:
     - where bash
+    - bash -c "git reset --hard"
     - bash -c "./script.sh"
