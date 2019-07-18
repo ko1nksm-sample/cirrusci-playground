@@ -12,7 +12,7 @@ touch files/writable
 chmod a=,u+w files/writable
 
 touch files/executable
-chmod a=,u+w files/executable
+chmod a=,u+x files/executable
 
 touch files/no-permission
 chmod a= files/no-permission
