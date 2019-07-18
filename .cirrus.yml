@@ -5,7 +5,7 @@ gitbash_task:
   env:
     PATH: $ProgramFiles\Git\bin;$PATH
   script:
-    - where bash
+    - where bash git
     - bash -c "./script.sh"
 
 msys_task:
@@ -17,7 +17,7 @@ msys_task:
   install_script:
     - choco install -y msys2
   script:
-    - where bash
+    - where bash git
     - bash -c "./script.sh"
 
 cygwin_task:
@@ -29,6 +29,7 @@ cygwin_task:
   install_script:
     - choco install -y cygwin cyg-get
   script:
-    - where bash
+    - where bash git
+    - bash -c "git config --global core.autoCRLF false"
     - bash -c "git reset --hard"
     - bash -c "./script.sh"
