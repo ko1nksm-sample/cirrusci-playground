@@ -6,7 +6,7 @@ gitbash_task:
     PATH: $ProgramFiles\Git\bin;$PATH
   script:
     - where bash
-    - bash -c "script.sh"
+    - bash -c "./script.sh"
 
 msys_task:
   windows_container:
@@ -18,7 +18,7 @@ msys_task:
     - choco install -y msys2
   script:
     - where bash
-    - bash -c "contrib/all.sh shellspec"
+    - bash -c "./script.sh"
 
 cygwin_task:
   windows_container:
@@ -30,4 +30,4 @@ cygwin_task:
     - choco install -y cygwin cyg-get
   script:
     - where bash
-    - bash -c 'contrib/all.sh shellspec'
+    - bash -c "./script.sh"
