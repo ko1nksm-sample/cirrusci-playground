@@ -19,11 +19,12 @@ osx_task:
   osx_instance:
     image: catalina-base
   script:
+    - whoami
     - mkdir -p chroot/usr
-    - cp -a -X /bin chroot/
-    - cp -a -X /usr/bin chroot/usr/
-    - cp -a -X /usr/lib chroot/usr/lib
-    - chroot chroot ./script.sh
+    - sudo cp -a -X /bin chroot/
+    - sudo cp -a -X /usr/bin chroot/usr/
+    - sudo cp -a -X /usr/lib chroot/usr/lib
+    - sudo chroot chroot ./script.sh
 
 #gitbash_task:
 #  windows_container:
