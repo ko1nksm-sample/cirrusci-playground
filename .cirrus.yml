@@ -36,3 +36,12 @@ cygwin_task:
     - bash -c "git config --global core.autoCRLF false"
     - bash -c "git reset --hard"
     - bash -c "./script.sh"
+
+freebsd_task:
+  freebsd_instance:
+    - image_family: freebsd-12-1
+  install_script: pkg install -y dash bash zsh ksh93 mksh oksh
+  script:
+    - where bash git
+    - git config -l
+    - ./script.sh

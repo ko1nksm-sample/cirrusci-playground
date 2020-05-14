@@ -1,9 +1,13 @@
 #!/bin/sh
 
+echo "========================="
 cd "$(dirname "$0")"
-
 env | grep -E '^(LC_|LANG|CYGWIN|MSYS)'
 mount
+echo "========================="
+
+touch /test
+ln -s /test /test2
 
 ls -al /
 
