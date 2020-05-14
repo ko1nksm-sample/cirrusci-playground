@@ -2,7 +2,7 @@ linux_task:
   container:
     image: debian
   script:
-    - where bash git
+    - which bash git
     - git config -l
     - ./script.sh
 
@@ -11,7 +11,7 @@ freebsd_task:
     image_family: freebsd-12-1
   install_script: pkg install -y dash bash zsh ksh93 mksh oksh
   script:
-    - where bash git
+    - which bash git
     - git config -l
     - ./script.sh
 
@@ -19,7 +19,7 @@ osx_task:
   osx_instance:
     image: catalina-base
   script:
-    - where bash git
+    - which bash git
     - git config -l
     - ./script.sh
 
