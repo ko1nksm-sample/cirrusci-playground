@@ -1,26 +1,26 @@
 linux_task:
   container:
     image: debian
+  #install_script:
+  #  - apt-get update
+  #  - apt-get install -y tree bash busybox dash ksh mksh posh yash zsh
+  #  - ln -s /bin/busybox /usr/local/bin/ash
   script:
-    - which bash git
-    - git config -l
-    - ./script.sh
+    - mkdir chroot
+    - cd chroot && mkdir bin usr lib lib64 etc
+    - chroot chroot ./script.sh
 
 freebsd_task:
   freebsd_instance:
     image_family: freebsd-12-1
   install_script: pkg install -y dash bash zsh ksh93 mksh oksh
   script:
-    - which bash git
-    - git config -l
     - ./script.sh
 
 osx_task:
   osx_instance:
     image: catalina-base
   script:
-    - which bash git
-    - git config -l
     - ./script.sh
 
 gitbash_task:
@@ -30,8 +30,6 @@ gitbash_task:
   env:
     PATH: $ProgramFiles\Git\bin;$PATH
   script:
-    - where bash git
-    - bash -c "git config -l"
     - bash -c "./script.sh"
 
 msys_task:
@@ -43,8 +41,6 @@ msys_task:
   install_script:
     - choco install -y msys2
   script:
-    - where bash git
-    - bash -c "git config -l"
     - bash -c "./script.sh"
 
 cygwin_task:
@@ -56,8 +52,4 @@ cygwin_task:
   install_script:
     - choco install -y cygwin cyg-get
   script:
-    - where bash git
-    - bash -c "git config -l"
-    - bash -c "git config --global core.autoCRLF false"
-    - bash -c "git reset --hard"
     - bash -c "./script.sh"
