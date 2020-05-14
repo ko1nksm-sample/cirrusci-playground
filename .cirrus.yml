@@ -6,50 +6,55 @@ linux_task:
   #  - apt-get install -y tree bash busybox dash ksh mksh posh yash zsh
   #  - ln -s /bin/busybox /usr/local/bin/ash
   script:
-    - mkdir chroot
-    - cd chroot && mkdir bin usr lib lib64 etc
+    - mkdir chroot/{bin,usr,lib,lib64 etc}
+    - mount --bind /bin chroot/bin
+    - mount --bind /usr chroot/usr
+    - mount --bind /lib chroot/lib
+    - mount --bind /lib64 chroot/lib64
+    - mount --bind /etc chroot/etc
     - chroot chroot ./script.sh
 
-freebsd_task:
-  freebsd_instance:
-    image_family: freebsd-12-1
-  install_script: pkg install -y dash bash zsh ksh93 mksh oksh
-  script:
-    - ./script.sh
-
-osx_task:
-  osx_instance:
-    image: catalina-base
-  script:
-    - ./script.sh
-
-gitbash_task:
-  windows_container:
-    image: cirrusci/windowsservercore:2019
-    os_version: 2019
-  env:
-    PATH: $ProgramFiles\Git\bin;$PATH
-  script:
-    - bash -c "./script.sh"
-
-msys_task:
-  windows_container:
-    image: cirrusci/windowsservercore:2019
-    os_version: 2019
-  env:
-    PATH: C:\tools\msys64\usr\bin;$PATH
-  install_script:
-    - choco install -y msys2
-  script:
-    - bash -c "./script.sh"
-
-cygwin_task:
-  windows_container:
-    image: cirrusci/windowsservercore:2019
-    os_version: 2019
-  env:
-    PATH: C:\tools\cygwin\bin;$PATH
-  install_script:
-    - choco install -y cygwin cyg-get
-  script:
-    - bash -c "./script.sh"
+#freebsd_task:
+#  freebsd_instance:
+#    image_family: freebsd-12-1
+#  install_script: pkg install -y dash bash zsh ksh93 mksh oksh
+#  script:
+#    - ./script.sh
+#
+#osx_task:
+#  osx_instance:
+#    image: catalina-base
+#  script:
+#    - ./script.sh
+#
+#gitbash_task:
+#  windows_container:
+#    image: cirrusci/windowsservercore:2019
+#    os_version: 2019
+#  env:
+#    PATH: $ProgramFiles\Git\bin;$PATH
+#  script:
+#    - bash -c "./script.sh"
+#
+#msys_task:
+#  windows_container:
+#    image: cirrusci/windowsservercore:2019
+#    os_version: 2019
+#  env:
+#    PATH: C:\tools\msys64\usr\bin;$PATH
+#  install_script:
+#    - choco install -y msys2
+#  script:
+#    - bash -c "./script.sh"
+#
+#cygwin_task:
+#  windows_container:
+#    image: cirrusci/windowsservercore:2019
+#    os_version: 2019
+#  env:
+#    PATH: C:\tools\cygwin\bin;$PATH
+#  install_script:
+#    - choco install -y cygwin cyg-get
+#  script:
+#    - bash -c "./script.sh"
+#
