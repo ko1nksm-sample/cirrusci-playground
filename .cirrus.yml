@@ -1,17 +1,12 @@
-linux_task:
-  container:
-    image: debian
-  #install_script:
-  #  - apt-get update
-  #  - apt-get install -y tree bash busybox dash ksh mksh posh yash zsh
-  #  - ln -s /bin/busybox /usr/local/bin/ash
-  script:
-    - mkdir -p chroot/bin   && mount --bind /bin   chroot/bin
-    - mkdir -p chroot/usr   && mount --bind /usr   chroot/usr
-    - mkdir -p chroot/lib   && mount --bind /lib   chroot/lib
-    - mkdir -p chroot/lib64 && mount --bind /lib64 chroot/lib64
-    - mkdir -p chroot/etc   && mount --bind /etc   chroot/etc
-    - chroot chroot ./script.sh
+#linux_task:
+#  container:
+#    image: debian
+#  install_script:
+#    - apt-get update
+#    - apt-get install -y tree bash busybox dash ksh mksh posh yash zsh
+#    - ln -s /bin/busybox /usr/local/bin/ash
+#  script:
+#    - ./script.sh
 
 #freebsd_task:
 #  freebsd_instance:
@@ -19,13 +14,17 @@ linux_task:
 #  install_script: pkg install -y dash bash zsh ksh93 mksh oksh
 #  script:
 #    - ./script.sh
-#
-#osx_task:
-#  osx_instance:
-#    image: catalina-base
-#  script:
-#    - ./script.sh
-#
+
+osx_task:
+  osx_instance:
+    image: catalina-base
+  script:
+    - mkdir -p chroot/usr
+    - cp -a -X /bin chroot/
+    - cp -a -X /usr/bin chroot/usr/
+    - cp -a -X /usr/lib chroot/usr/lib
+    - chroot chroot ./script.sh
+
 #gitbash_task:
 #  windows_container:
 #    image: cirrusci/windowsservercore:2019
