@@ -17,7 +17,7 @@ freebsd_task:
 
 osx_task:
   osx_instance:
-    image_family: catalina-base
+    image: catalina-base
   script:
     - where bash git
     - git config -l
