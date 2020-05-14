@@ -6,12 +6,11 @@ linux_task:
   #  - apt-get install -y tree bash busybox dash ksh mksh posh yash zsh
   #  - ln -s /bin/busybox /usr/local/bin/ash
   script:
-    - mkdir chroot/{bin,usr,lib,lib64 etc}
-    - mount --bind /bin chroot/bin
-    - mount --bind /usr chroot/usr
-    - mount --bind /lib chroot/lib
-    - mount --bind /lib64 chroot/lib64
-    - mount --bind /etc chroot/etc
+    - mkdir -p chroot/bin   && mount --bind /bin   chroot/bin
+    - mkdir -p chroot/usr   && mount --bind /usr   chroot/usr
+    - mkdir -p chroot/lib   && mount --bind /lib   chroot/lib
+    - mkdir -p chroot/lib64 && mount --bind /lib64 chroot/lib64
+    - mkdir -p chroot/etc   && mount --bind /etc   chroot/etc
     - chroot chroot ./script.sh
 
 #freebsd_task:
