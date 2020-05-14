@@ -1,4 +1,4 @@
-container:
+linux_task:
   container:
     image: debian
   script:
