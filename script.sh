@@ -12,6 +12,7 @@ touch /test
 ln -s /test /test2
 
 ls -al /
+tree -C -N --noreport -I "*[a-z]*" /
 
 # touch files/readable
 # chmod a=,u+r files/readable
