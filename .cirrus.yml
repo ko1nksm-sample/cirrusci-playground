@@ -20,11 +20,12 @@ osx_task:
     image: catalina-base
   script:
     - whoami
+    - cd
+    - ls -al ./
     - mkdir -p chroot/usr
     - sudo cp -a -X /bin chroot/
     - sudo cp -a -X /usr/bin chroot/usr/
     - sudo cp -a -X /usr/lib chroot/usr/lib
-    - sudo cp -a -X ./ chroot/root
     - sudo chroot chroot /root/script.sh
 
 #gitbash_task:
