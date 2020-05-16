@@ -6,7 +6,7 @@ linux_task:
 #    - apt-get install -y tree bash busybox dash ksh mksh posh yash zsh
 #    - ln -s /bin/busybox /usr/local/bin/ash
   env:
-    - ALLOW_CREATION_TO_THE_ROOT_DIRECTORY=1
+    - ALLOW_CREATION_TO_THE_ROOT_DIRECTORY: 1
   script:
     - ./script.sh
     - ./test.sh sh
