@@ -24,7 +24,8 @@ osx_task:
     - sudo cp -a -X /bin chroot/
     - sudo cp -a -X /usr/bin chroot/usr/
     - sudo cp -a -X /usr/lib chroot/usr/lib
-    - sudo chroot chroot ./script.sh
+    - sudo cp -a -X ./ chroot/root
+    - sudo chroot chroot /root/script.sh
 
 #gitbash_task:
 #  windows_container:
