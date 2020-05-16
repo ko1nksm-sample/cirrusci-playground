@@ -4,7 +4,7 @@ echo "========================="
 pwd
 ls -al
 cd "$(dirname "$0")"
-env | grep -E '^(LC_|LANG|CYGWIN|MSYS)'
+env | grep -E '^(LC_|LANG|CYGWIN|MSYS|PATH)'
 mount
 echo "========================="
 
