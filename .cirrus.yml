@@ -23,10 +23,12 @@ osx_task:
     - pwd
     - ls -al ./
     - echo $PATH
-    - mkdir -p ~/chroot/usr
-    - sudo cp -a -X /bin /sbin ~/chroot/
-    - sudo cp -a -X /usr/bin /usr/lib ~/chroot/usr/
-    - sudo cp -a -X ./ ~/chroot/root
+    #- mkdir -p ~/chroot/usr
+    #- sudo cp -a -X /bin /sbin ~/chroot/
+    #- sudo cp -a -X /usr/bin /usr/lib ~/chroot/usr/
+    #- sudo cp -a -X ./ ~/chroot/root
+    - sudo ln -s /bin /sbin /usr ~/chroot/
+    - sudo ln -s "$PWD" ~/chroot/root
     - find ~/chroot
     - sudo chroot ~/chroot /root/script.sh
 
