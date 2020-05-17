@@ -32,7 +32,7 @@ osx_task:
   script:
     - mkdir -p ~/chroot/usr
     - sudo cp -a -X /bin /sbin ~/chroot/
-    - sudo cp -a -X /usr/bin /usr/lib ~/chroot/usr/
+    - sudo cp -a -X /usr/bin /usr/lib /usr/local ~/chroot/usr/
     - sudo cp -a -X ./ ~/chroot/root
     - sudo chroot ~/chroot /root/script.sh
     - sudo chroot ~/chroot /root/test.sh sh
