@@ -141,8 +141,8 @@ ex=$?
 
 # Extra test
 pass_fail_number=$((TEST_COUNT + 2))
-cd /dev
 cd /bin
+cd /dev
 CDPATH=/usr
 
 variable_check() {
@@ -155,13 +155,13 @@ variable_check() {
 }
 
 link=$(readlinkf_readlink /RLF-BASE/DIR/LINK3) >/dev/null
-variable_check 'readlinkf_readlink: PWD' [ "$PWD" = /tmp ]
-variable_check 'readlinkf_readlink: OLDPWD' [ "$OLDPWD" = /var ]
+variable_check 'readlinkf_readlink: PWD' [ "$PWD" = /dev ]
+variable_check 'readlinkf_readlink: OLDPWD' [ "$OLDPWD" = /bin ]
 variable_check 'readlinkf_readlink: CDPATH' [ "$CDPATH" = /usr ]
 
 link=$(readlinkf_posix /RLF-BASE/DIR/LINK3) >/dev/null
-variable_check 'readlinkf_posix: PWD' [ "$PWD" = /tmp ]
-variable_check 'readlinkf_posix: OLDPWD' [ "$OLDPWD" = /var ]
+variable_check 'readlinkf_posix: PWD' [ "$PWD" = /dev ]
+variable_check 'readlinkf_posix: OLDPWD' [ "$OLDPWD" = /bin ]
 variable_check 'readlinkf_posix: CDPATH' [ "$CDPATH" = /usr ]
 
 echo "-------------------------------- Cleanup -------------------------------"
