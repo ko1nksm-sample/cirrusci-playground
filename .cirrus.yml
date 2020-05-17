@@ -118,7 +118,7 @@ cygwin_task:
     - cyg-get tree dash bash busybox mksh posh zsh
   script:
     - sh -c "./script.sh"
-    - sh -c "cp /usr/bin/busybox /usr/bin/ash"
+    - sh -c "cp -f /usr/bin/busybox /usr/bin/ash"
     - sh -c "ALLOW_CREATION_TO_THE_ROOT_DIRECTORY=1 ./test.sh sh"
     - sh -c "ALLOW_CREATION_TO_THE_ROOT_DIRECTORY=1 ./test.sh ash"
     - sh -c "ALLOW_CREATION_TO_THE_ROOT_DIRECTORY=1 ./test.sh dash"
