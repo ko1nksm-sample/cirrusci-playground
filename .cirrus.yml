@@ -37,15 +37,17 @@ osx_task:
     - sudo chroot ~/chroot /root/script.sh
     - sudo chroot ~/chroot sh -c 'ALLOW_CREATION_TO_THE_ROOT_DIRECTORY=1 /root/test.sh sh'
 
-#gitbash_task:
-#  windows_container:
-#    image: cirrusci/windowsservercore:2019
-#    os_version: 2019
-#  env:
-#    PATH: $ProgramFiles\Git\bin;$PATH
-#    MSYS: winsymlinks:nativestrict
-#  script:
-#    - sh -c "./script.sh"
+gitbash_task:
+  windows_container:
+    image: cirrusci/windowsservercore:2019
+    os_version: 2019
+  env:
+    - PATH: $ProgramFiles\Git\bin;$PATH
+    - MSYS: winsymlinks:nativestrict
+    - ALLOW_CREATION_TO_THE_ROOT_DIRECTORY: 1
+  script:
+    - sh -c "./script.sh"
+    - sh -c "./test.sh sh"
 
 msys_task:
   windows_container:
