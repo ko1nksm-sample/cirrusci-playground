@@ -56,7 +56,7 @@ make_file "/RLF-SPACE INCLUDED/FILE NAME"
 make_link "/RLF-SPACE INCLUDED/DIR NAME/SYMBOLIC LINK -> ../FILE NAME"
 
 echo "--------------------------------- Tree ---------------------------------"
-run tree -C -N --noreport -I "*[a-z]*" / ||:
+type tree && run tree -C -N --noreport -I "*[a-z]*" /
 
 echo "--------------------------------- Tests --------------------------------"
 TEST_COUNT=$((29 * 2 * 4)) # expected test count
@@ -177,6 +177,6 @@ run rm -rf "/RLF-LOOP2"
 run rm -rf "/RLF-MISSING"
 run rm -rf "/RLF-ROOT"
 run rm -rf "/RLF-SPACE INCLUDED"
-run tree -C -N --noreport -I "*[a-z]*" / ||:
+type tree && run tree -C -N --noreport -I "*[a-z]*" /
 
 exit $ex
