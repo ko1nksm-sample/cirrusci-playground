@@ -116,9 +116,17 @@ tests() {
   return "$ex"
 }
 
+readlink_native() {
+  if type greadlink >/dev/null; then
+    $(which greadlink) "$@"
+  else
+    $(which readlink) "$@"
+  fi
+}
+
 compare_with_readlink() {
   # shellcheck disable=SC2230
-  link=$($(which readlink) -f "$1") &&:; set -- "$@" "$link" "$?"
+  link=$(readlink_native -f "$1") &&:; set -- "$@" "$link" "$?"
   link=$(readlinkf_posix "$1") &&:; set -- "$@" "$link" "$?"
   link=$(readlinkf_readlink "$1") &&:; set -- "$@" "$link" "$?"
 

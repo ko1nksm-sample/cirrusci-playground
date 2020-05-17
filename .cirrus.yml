@@ -12,13 +12,18 @@ linux_task:
     - ./script.sh
     - ./test.sh sh
 
-#freebsd_task:
-#  freebsd_instance:
-#    image_family: freebsd-12-1
-##  install_script: pkg install -y dash bash zsh ksh93 mksh oksh
-#  script:
-#    - ./script.sh
-#
+freebsd_task:
+  freebsd_instance:
+    image_family: freebsd-12-1
+  install_script:
+    - pkg install -y tree coreutils
+#  install_script: pkg install -y dash bash zsh ksh93 mksh oksh
+  env:
+    - ALLOW_CREATION_TO_THE_ROOT_DIRECTORY: 1
+  script:
+    - ./script.sh
+    - ./test.sh sh
+
 #osx_task:
 #  osx_instance:
 #    image: catalina-base
