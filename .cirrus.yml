@@ -59,7 +59,7 @@ msys_task:
     - ALLOW_CREATION_TO_THE_ROOT_DIRECTORY: 1
   install_script:
     - choco install -y msys2
-    - pacman -S tree
+    - pacman -S --noconfirm tree
   script:
     - sh -c "./script.sh"
     - sh -c "./test.sh sh"
@@ -75,3 +75,4 @@ cygwin_task:
     - cyg-get tree
   script:
     - sh -c "./script.sh"
+    - sh -c "./test.sh sh"
