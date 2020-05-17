@@ -29,15 +29,13 @@ osx_task:
     image: catalina-base
   install_script:
     - brew install tree coreutils
-  env:
-    - ALLOW_CREATION_TO_THE_ROOT_DIRECTORY: 1
   script:
     - mkdir -p ~/chroot/usr
     - sudo cp -a -X /bin /sbin ~/chroot/
     - sudo cp -a -X /usr/bin /usr/lib /usr/local ~/chroot/usr/
     - sudo cp -a -X ./ ~/chroot/root
     - sudo chroot ~/chroot /root/script.sh
-    - sudo chroot ~/chroot /root/test.sh sh
+    - sudo chroot ~/chroot sh -c 'ALLOW_CREATION_TO_THE_ROOT_DIRECTORY=1 /root/test.sh sh'
 
 #gitbash_task:
 #  windows_container:
@@ -48,19 +46,22 @@ osx_task:
 #    MSYS: winsymlinks:nativestrict
 #  script:
 #    - sh -c "./script.sh"
-#
-#msys_task:
-#  windows_container:
-#    image: cirrusci/windowsservercore:2019
-#    os_version: 2019
-#  env:
-#    PATH: C:\tools\msys64\usr\bin;$PATH
-#    MSYS: winsymlinks:nativestrict
-#  install_script:
-#    - choco install -y msys2
-#  script:
-#    - sh -c "./script.sh"
-#
+
+msys_task:
+  windows_container:
+    image: cirrusci/windowsservercore:2019
+    os_version: 2019
+  env:
+    - PATH: C:\tools\msys64\usr\bin;$PATH
+    - MSYS: winsymlinks:nativestrict
+    - ALLOW_CREATION_TO_THE_ROOT_DIRECTORY: 1
+  install_script:
+    - choco install -y msys2
+    - pacman -S tree
+  script:
+    - sh -c "./script.sh"
+    - sh -c "./test.sh sh"
+
 #cygwin_task:
 #  windows_container:
 #    image: cirrusci/windowsservercore:2019
