@@ -29,6 +29,8 @@ osx_task:
     image: catalina-base
   install_script:
     - brew install tree coreutils
+  env:
+    - ALLOW_CREATION_TO_THE_ROOT_DIRECTORY: 1
   script:
     - mkdir -p ~/chroot/usr
     - sudo cp -a -X /bin /sbin ~/chroot/
