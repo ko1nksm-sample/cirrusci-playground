@@ -95,12 +95,10 @@ msys_task:
     - MSYS: winsymlinks:lnk
   install_script:
     - choco install -y msys2
-    - pacman -S --noconfirm tree dash bash busybox mksh zsh
+    - pacman -S --noconfirm tree dash bash mksh zsh
   script:
     - sh -c "./script.sh"
-    - sh -c "cp /usr/bin/busybox.exe /usr/bin/ash.exe"
     - sh -c "ALLOW_CREATION_TO_THE_ROOT_DIRECTORY=1 ./test.sh sh"
-    - sh -c "ALLOW_CREATION_TO_THE_ROOT_DIRECTORY=1 ./test.sh ash"
     - sh -c "ALLOW_CREATION_TO_THE_ROOT_DIRECTORY=1 ./test.sh dash"
     - sh -c "ALLOW_CREATION_TO_THE_ROOT_DIRECTORY=1 ./test.sh bash"
     - sh -c "ALLOW_CREATION_TO_THE_ROOT_DIRECTORY=1 ./test.sh mksh"
@@ -115,12 +113,10 @@ cygwin_task:
     - CYGWIN: winsymlinks:lnk
   install_script:
     - choco install -y cygwin cyg-get
-    - cyg-get tree dash bash busybox mksh posh zsh
+    - cyg-get tree dash bash mksh posh zsh
   script:
     - sh -c "./script.sh"
-    - sh -c "cp -f /usr/bin/busybox /usr/bin/ash"
     - sh -c "ALLOW_CREATION_TO_THE_ROOT_DIRECTORY=1 ./test.sh sh"
-    - sh -c "ALLOW_CREATION_TO_THE_ROOT_DIRECTORY=1 ./test.sh ash"
     - sh -c "ALLOW_CREATION_TO_THE_ROOT_DIRECTORY=1 ./test.sh dash"
     - sh -c "ALLOW_CREATION_TO_THE_ROOT_DIRECTORY=1 ./test.sh bash"
     - sh -c "ALLOW_CREATION_TO_THE_ROOT_DIRECTORY=1 ./test.sh mksh"
