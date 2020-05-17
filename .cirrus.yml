@@ -24,20 +24,19 @@ freebsd_task:
     - ./script.sh
     - ./test.sh sh
 
-#osx_task:
-#  osx_instance:
-#    image: catalina-base
-#  script:
-#    - whoami
-#    - pwd
-#    - ls -al ./
-#    - echo $PATH
-#    - mkdir -p ~/chroot/usr
-#    - sudo cp -a -X /bin /sbin ~/chroot/
-#    - sudo cp -a -X /usr/bin /usr/lib ~/chroot/usr/
-#    - sudo cp -a -X ./ ~/chroot/root
-#    - sudo chroot ~/chroot /root/script.sh
-#
+osx_task:
+  osx_instance:
+    image: catalina-base
+  install_script:
+    - brew install tree coreutils
+  script:
+    - mkdir -p ~/chroot/usr
+    - sudo cp -a -X /bin /sbin ~/chroot/
+    - sudo cp -a -X /usr/bin /usr/lib ~/chroot/usr/
+    - sudo cp -a -X ./ ~/chroot/root
+    - sudo chroot ~/chroot /root/script.sh
+    - sudo chroot ~/chroot /root/test.sh sh
+
 #gitbash_task:
 #  windows_container:
 #    image: cirrusci/windowsservercore:2019
