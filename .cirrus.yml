@@ -30,7 +30,7 @@ osx_task:
   install_script:
     - brew install tree coreutils
   script:
-    - mkdir -p ~/chroot/dev ~/chroot/var ~/chroot/tmp ~/chroot/usr
+    - mkdir -p ~/chroot/dev ~/chroot/usr
     - sudo cp -a -X /bin /sbin ~/chroot/
     - sudo cp -a -X /usr/bin /usr/lib /usr/local ~/chroot/usr/
     - sudo cp -a -X ./ ~/chroot/root

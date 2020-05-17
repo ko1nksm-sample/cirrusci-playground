@@ -114,7 +114,7 @@ tests() {
 }
 
 readlink_native() {
-  if type greadlink >/dev/null; then
+  if type greadlink >/dev/null 2>&1; then
     $(which greadlink) "$@"
   else
     $(which readlink) "$@"
@@ -141,8 +141,8 @@ ex=$?
 
 # Extra test
 pass_fail_number=$((TEST_COUNT + 2))
-cd /var
-cd /tmp
+cd /dev
+cd /bin
 CDPATH=/usr
 
 variable_check() {
