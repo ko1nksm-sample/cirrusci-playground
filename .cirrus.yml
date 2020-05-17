@@ -79,7 +79,7 @@ gitbash_task:
     os_version: 2019
   env:
     - PATH: $ProgramFiles\Git\bin;$PATH
-    - MSYS: winsymlinks:nativestrict
+    - MSYS: winsymlinks:lnk
   script:
     - sh -c "./script.sh"
     - sh -c "ALLOW_CREATION_TO_THE_ROOT_DIRECTORY=1 ./test.sh sh"
@@ -92,7 +92,7 @@ msys_task:
     os_version: 2019
   env:
     - PATH: C:\tools\msys64\usr\bin;$PATH
-    - MSYS: winsymlinks:nativestrict
+    - MSYS: winsymlinks:lnk
   install_script:
     - choco install -y msys2
     - pacman -S --noconfirm tree dash bash busybox mksh zsh
@@ -112,7 +112,7 @@ cygwin_task:
     os_version: 2019
   env:
     - PATH: C:\tools\cygwin\bin;$PATH
-    - ALLOW_CREATION_TO_THE_ROOT_DIRECTORY: 1
+    - CYGWIN: winsymlinks:lnk
   install_script:
     - choco install -y cygwin cyg-get
     - cyg-get tree dash bash busybox mksh posh zsh
