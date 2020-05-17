@@ -5,23 +5,21 @@ cd "$(dirname "$0")"
 
 . ./helper.sh
 
-if [ "$(id -u)" -eq 0 ] && [ ! -e /.dockerenv ]; then
+if [ ! -e /.dockerenv ]; then
   if [ ! "${ALLOW_CREATION_TO_THE_ROOT_DIRECTORY:-}" ]; then
     abort "Set ALLOW_CREATION_TO_THE_ROOT_DIRECTORY environment variable"
   fi
-else
-  if [ ! -e /.dockerenv ]; then
-    run docker --version >&2 || abort "You need docker to run"
-    shell=${1:-sh} dockerfile=${2:-dockerfiles/debian} tag=${3:-}
-    set -- -f "$dockerfile"
-    [ ${tag:+x} ] && set -- "$@" --build-arg "TAG=$tag"
-    iidfile=$(mktemp)
-    run docker build --iidfile "$iidfile" "$@" .
-    iid=$(cat "$iidfile")
-    rm "$iidfile"
-    run docker run --rm -t "$iid" "$shell" "./${0##*/}"
-    exit
-  fi
+
+  run docker --version >&2 || abort "You need docker to run"
+  shell=${1:-sh} dockerfile=${2:-dockerfiles/debian} tag=${3:-}
+  set -- -f "$dockerfile"
+  [ ${tag:+x} ] && set -- "$@" --build-arg "TAG=$tag"
+  iidfile=$(mktemp)
+  run docker build --iidfile "$iidfile" "$@" .
+  iid=$(cat "$iidfile")
+  rm "$iidfile"
+  run docker run --rm -t "$iid" "$shell" "./${0##*/}"
+  exit
 fi
 
 . ./readlinkf.sh
