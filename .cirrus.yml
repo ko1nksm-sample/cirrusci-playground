@@ -94,7 +94,7 @@ msys_task:
     - PATH: C:\tools\msys64\usr\bin;$PATH
     - MSYS: winsymlinks:lnk
   install_script:
-    - choco install -y msys2
+          #- choco install -y msys2
     - pacman -S --noconfirm tree dash bash mksh zsh
   script:
     - sh -c "./script.sh"
