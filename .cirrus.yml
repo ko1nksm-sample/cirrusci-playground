@@ -1,6 +1,6 @@
 linux_task:
   container:
-    image: debian
+    image: ubuntu:20.10
   install_script:
     - apt-get update
     - apt-get install -y zsh
